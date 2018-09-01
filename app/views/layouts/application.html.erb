@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dobbo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'dhtmlxscheduler', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'dhtmlxscheduler', 'data-turbolinks-track' => true %>
+
+  </head>
+
+
+  <body>
+    <%= yield %>
+    <%= js add_gritter(flash[:notice], title: "Notificacion de Dobbo", sticky: false) %>
+  </body>
+
+
+  <footer class="footer p-t-10">
+        <div>
+          <hr>
+            <p class="h5 sidebar-color" align="center">
+                DOBBO 2018
+            </p>
+        </div>
+  </footer>
+
+</html>

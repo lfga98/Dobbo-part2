@@ -1,0 +1,32 @@
+<%= render 'shared/nav' %>
+<div class="container-fluid">
+    <%= render 'shared/sidenavbar'%>
+<div class="row">
+  <div class="col-lg-8">
+    <h3>Citas para el día de hoy</h3>
+    <hr>
+    <% @today_appointments.each do |today_apmt| %>
+  	<div class='homepage-block col-md-3'>
+  		<h4>
+  			<%= today_apmt.patient.full_name %>
+  		</h4>
+
+  		<p>
+  			<span class='pending-details'>Fecha:</span> <%= today_apmt.start_date.strftime("%d/%m/%Y") %>
+  		</p>
+
+  		<p>
+  			<span class='pending-details'>Hora:</span> <%=today_apmt.start_date.strftime("%H:%M %p")  %>
+  		</p>
+      <p>
+  			<span class='pending-details'>Hora fin:</span> <%=today_apmt.end_date.strftime("%H:%M %p")  %>
+  		</p>
+      <div class='col-md-11 column'>
+				<%= link_to 'Consulta', root_path, class: 'btn btn-success btn-block'  %>
+      </div>
+
+
+  	</div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<%= render 'shared/nav' %>
+<div class="container-fluid">
+    <%= render 'shared/sidenavbar'%>
+<div class="row">
+  <div class="col-lg-8">
+    <div>
+          <h2 align="center" class="tittle"> Cita de: <%= @appointment.patient.full_name %> </h2>
+      </div>
+    </div>
+    <div class="col-lg-8">
+        <br>
+        <br>
+        <h3>Datos de la cita</h3>
+        <hr>
+    </div>
+    <div class="col-lg-3">
+        <% apomt_today =@appointment.start_date%>
+        <% apomt_end_today =@appointment.end_date%>
+        <h4><strong>Fecha</strong></h4> <%= apomt_today.strftime("%d/%m/%Y") %> 
+    </div>
+    <div class="col-lg-3">
+        <h4><strong>Hora inicio</strong></h4> <%= apomt_today.strftime("%H:%M %p")%>
+    </div>
+    <div class="col-lg-2">
+        <h4><strong>Hora fin</strong></h4> <%= apomt_end_today.strftime("%H:%M %p")%>
+    </div>
+
+
+    <div class="col-lg-8">
+      <br>
+      <br>
+      <h3>Observaciones adicionales</h3>
+      <hr>
+      <div class="col-md-offset-1 ">
+        <br>
+        </h4> <%= @appointment.observation  %>
+      </div>
+    </div>
+
+  </div>
+    <div class="col-md-offset-10 ">
+      <br>
+      <br>
+      <%= link_to 'Eliminar', appointment_path(@appointment), method: :delete, class: 'btn btn-danger',data: { confirm: '¿Seguro que quiere eliminar esta cita?' } %>
+      <%= link_to 'Editar', edit_appointment_path(@appointment), class: 'btn btn-primary' %>
+      <br>
+      <br>
+    </div>
+
+</div>

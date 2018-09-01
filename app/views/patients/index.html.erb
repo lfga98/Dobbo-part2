@@ -1,0 +1,39 @@
+<%= render 'shared/nav' %>
+<div class="container-fluid">
+    <%= render 'shared/sidenavbar'%>
+<div class="row">
+<div class="col-lg-8">
+    <h1 class="tittle"> Todos los pacientes </h1>
+      <table class="table">
+      <thead class="thead-dark">
+
+
+      <div class="col-md-5 col-md-offset-8 ">
+        <%= form_tag patients_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Buscar", :name => nil %>
+          </p>
+        <% end %>
+      </div>
+        <tr>
+          <th scope="col">No. Paciente</th>
+          <th scope="col">Nombre completo</th>
+          <th scope="col ">Telefóno</th>
+          <th scope="col" class="hidden-xs">Email</th>
+          <th scope="col" class="hidden-xs"></th>
+          <th scope="col" class="hidden-xs"></th>
+          <th scope="col" class="hidden-xs">
+
+          </th>
+        </tr>
+      </thead>
+        <tbody id="patients">
+          <%= render @patients %>
+        </tbody>
+    </table>
+      <div class="col-md-offset-4">
+        <%= paginate @patients %>
+    </div>
+  </div>
+</div>

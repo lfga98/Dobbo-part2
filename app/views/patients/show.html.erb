@@ -1,0 +1,170 @@
+<%= render 'shared/nav' %>
+<div class="container-fluid">
+    <%= render 'shared/sidenavbar'%>
+  <div class="row">
+
+    <div class="col-lg-8">
+      <div>
+            <h2 align="center" class="tittle"><%= @patient.full_name %> </h2>
+        </div>
+        <div >
+            <br>
+            <br>
+            <h3>Datos Generales</h3>
+            <hr>
+        </div>
+          <div class="col-lg-4">
+      		    <h4><strong>Número de paciente</strong></h4> <%= @patient.id %>
+          </div>
+
+          <% if @patient.age %>
+          <div class="col-lg-4">
+      		    <h4><strong>Edad</strong></h4> <%= @patient.age %>
+          </div>
+          <%end%>
+
+          <% if @patient.date_birth %>
+          <div class="col-lg-4">
+      		    <h4><strong>Fecha de nacimiento</strong></h4> <%= @patient.date_birth %>
+          </div>
+          <%end%>
+
+          <% if @patient.gender %>
+          <div class="col-lg-4">
+            <br>
+      		    <h4><strong>Sexo</strong></h4> <%= @patient.gender %>
+          </div>
+          <%end%>
+
+          <% if !@patient.scholarship.eql?("") %>
+          <div class="col-lg-4">
+            <br>
+      		    <h4><strong>Escolaridad</strong></h4> <%= @patient.scholarship  %>
+          </div>
+          <% end %>
+
+          <% if !@patient.occupation.eql?("") %>
+          <div class="col-lg-4">
+            <br>
+      		    <h4><strong>Ocupación</strong></h4> <%= @patient.occupation  %>
+          </div>
+          <%end%>
+
+
+          <div class="col-lg-4">
+            <br>
+              <h4><strong>Estado civil:</strong></h4> <%= @patient.civil_status  %>
+          </div>
+
+
+          <div class="col-lg-4">
+            <br>
+      		    <h4><strong>Telefono:</strong></h4> <%= @patient.telephone  %>
+          </div>
+
+          <div class="col-lg-4">
+            <br>
+              <h4><strong>Correo Electronico:</strong></h4> <%= @patient.email  %>
+          </div>
+
+          <div class="col-lg-11">
+            <br>
+            <br>
+              <h3>Domicilio</h3>
+              <hr>
+          </div>
+
+          <% if !@patient.street.eql?("") %>
+          <div class="col-lg-4">
+            <h4><strong>Calle</strong></h4> <%= @patient.street  %>
+          </div>
+          <%end%>
+
+          <% if @patient.number %>
+          <div class="col-lg-4">
+            <h4><strong>Número</strong></h4> <%= @patient.number  %>
+          </div>
+          <%end%>
+
+          <% if !@patient.suburb.eql?("") %>
+          <div class="col-lg-4">
+            <h4><strong>Colonia</strong></h4> <%= @patient.suburb  %>
+          </div>
+          <%end%>
+
+          <% if !@patient.city.eql?("") %>
+          <div class="col-lg-4">
+            <br>
+            <h4><strong>Ciudad</strong></h4> <%= @patient.city  %>
+            <br>
+          </div>
+          <%end%>
+
+          <% if !@patient.mun.eql?("") %>
+          <div class="col-lg-4">
+            <br>
+            <h4><strong>Municipio</strong></h4> <%= @patient.mun  %>
+            <br>
+          </div>
+          <%end%>
+
+          <% if !@patient.county.eql?("") %>
+          <div class="col-lg-4">
+            <br>
+            <h4><strong>Estado</strong></h4> <%= @patient.county  %>
+            <br>
+          </div>
+          <%end%>
+
+          <div class="col-lg-11">
+            <br>
+            <br>
+            <h3>Motivo de visita</h3>
+            <hr>
+          <% if !@patient.reason_desc.eql?("") %>
+            <div class="col-md-offset-1 ">
+              <br>
+            </h4> <%= @patient.reason_desc  %>
+            </div>
+          <%end%>
+          </div>
+          <div class="col-lg-11">
+            <br>
+            <br>
+              <h3>Todas las citas del paciente</h3>
+              <hr>
+          </div>
+
+          <% @patient.appointments.each do |apmt| %>
+            <div class='homepage-block col-md-3'>
+              <p>
+                <span class='pending-details'>Fecha:</span> <%= apmt.start_date.strftime("%d/%m/%Y") %>
+              </p>
+              <p>
+                <span class='pending-details'>Hora Incio:</span> <%= apmt.start_date.strftime("%H:%M %p") %>
+              </p>
+              <p>
+                <span class='pending-details'>Hora Fin:</span> <%= apmt.end_date.strftime("%H:%M %p") %>
+              </p>
+              <div class='col-md-11 column'>
+                <%= link_to 'Detalles',appointment_path(apmt), id:"edit_#{apmt.id}", class: 'btn btn-info btn-block'  %>
+              </div>
+            </div>
+          <%end%>
+
+    </div>
+
+
+
+
+  </div>
+    <div class="col-md-offset-10 ">
+      <br>
+      <br>
+      <%= link_to 'Eliminar', patient_path(@patient), method: :delete, class: 'btn btn-danger',data: { confirm: '¿Seguro que quiere eliminar este paciente?' } %>
+      <%= link_to 'Editar', edit_patient_path(@patient), class: 'btn btn-primary' %>
+      <br>
+      <br>
+    </div>
+
+</div>

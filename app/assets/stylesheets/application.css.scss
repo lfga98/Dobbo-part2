@@ -1,0 +1,47 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "navbar";
+@import "gritter";
+
+
+.tittle{
+  font-family: Helvetica;
+  font-size: 45px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+.back{
+  background-color: #c0c3c6;
+}
+.backgroundapp{
+  background-color: #e3e7ed;
+}
+
+.homepage-block {
+	background-color: #ededed;
+  transition: 0.3s;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #444444;
+	margin: 10px 30px 20px 30px;
+  border-color: #000;
+	padding: 15px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: .5rem;
+}
+.pending-details {
+	font-weight: 900;
+}
+
+a:hover {
+    background-color: white;
+    color:#01368c;
+    text-decoration: none;
+}
